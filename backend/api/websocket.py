@@ -26,7 +26,7 @@ logger = logging.getLogger("ai_village.ws")
 router = APIRouter()
 
 # 已连接的客户端集合
-_connected_clients: set[WebSocket] = set()
+_connected_clients: set = set()
 
 
 async def broadcast_world_update(world_engine: WorldEngine, agent_manager: AgentManager):
@@ -69,7 +69,7 @@ async def broadcast_world_update(world_engine: WorldEngine, agent_manager: Agent
             disconnected.add(client)
 
     # 清理断开的客户端
-    _connected_clients -= disconnected
+    _connected_clients.difference_update(disconnected)
 
 
 @router.websocket("/ws")
