@@ -1,0 +1,26 @@
+{
+  "description": "AI Village 全局技能池 — 定义小镇中存在的所有技能",
+  "skills": {
+    "教学":     {"category": "知识", "icon": "📚"},
+    "烘焙":     {"category": "手艺", "icon": "🥐"},
+    "花艺":     {"category": "手艺", "icon": "🌸"},
+    "诊断":     {"category": "知识", "icon": "🩺"},
+    "绘画":     {"category": "艺术", "icon": "🎨"},
+    "摄影":     {"category": "艺术", "icon": "📷"},
+    "下棋":     {"category": "娱乐", "icon": "♟️"},
+    "木工":     {"category": "手艺", "icon": "🔧"},
+    "编程":     {"category": "知识", "icon": "💻"},
+    "音乐":     {"category": "艺术", "icon": "🎵"},
+    "烹饪":     {"category": "手艺", "icon": "🍳"},
+    "养生":     {"category": "知识", "icon": "🌿"},
+    "社交":     {"category": "社交", "icon": "💬"},
+    "沟通":     {"category": "社交", "icon": "🗣️"},
+    "记账":     {"category": "知识", "icon": "📊"},
+    "手工":     {"category": "手艺", "icon": "✂️"},
+    "创意":     {"category": "艺术", "icon": "💡"},
+    "讲故事":   {"category": "社交", "icon": "📖"},
+    "商业":     {"category": "知识", "icon": "💰"},
+    "急救":     {"category": "知识", "icon": "🚑"},
+    "学习":     {"category": "知识", "icon": "📝"}
+  }
+}

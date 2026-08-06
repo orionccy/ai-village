@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏘️ AI Village — 多智能体虚拟小镇</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <!-- 存档选择弹窗 -->
+    <div id="save-modal" class="modal" style="display:none">
+        <div class="modal-content">
+            <h2>🏘️ AI Village</h2>
+            <p id="save-modal-info"></p>
+            <div class="modal-buttons">
+                <button id="btn-continue" class="modal-btn primary" onclick="continueGame()">▶ 继续游戏</button>
+                <button id="btn-newgame" class="modal-btn" onclick="newGame()">🆕 新游戏</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 顶部导航栏 -->
+    <!-- ============================================================ -->
+    <header id="top-bar">
+        <div class="top-left">
+            <h1>🏘️ AI Village</h1>
+            <span class="subtitle">多智能体虚拟小镇</span>
+        </div>
+
+        <nav class="tab-nav">
+            <button class="tab-btn active" data-tab="world" onclick="switchTab('world')">
+                🌍 世界
+            </button>
+            <button class="tab-btn" data-tab="monitor" onclick="switchTab('monitor')">
+                📊 监测
+            </button>
+            <button class="tab-btn" data-tab="logs" onclick="switchTab('logs')">
+                📋 全部日志
+            </button>
+        </nav>
+
+        <div class="top-right">
+            <span id="connection-status" class="status-dot disconnected"></span>
+            <span id="status-text">未连接</span>
+        </div>
+    </header>
+
+    <!-- ============================================================ -->
+    <!-- 主内容区 -->
+    <!-- ============================================================ -->
+
+    <!-- 🌍 世界视图 -->
+    <main id="tab-world" class="tab-content active">
+        <div class="world-layout">
+            <!-- 左侧：Canvas 地图 -->
+            <section class="map-container">
+                <canvas id="world-canvas" width="600" height="600">
+                    您的浏览器不支持 Canvas，请使用现代浏览器打开。
+                </canvas>
+                <!-- 地图上的 tooltip -->
+                <div id="map-tooltip" class="tooltip hidden"></div>
+            </section>
+
+            <!-- 中间：Agent 详情面板 -->
+            <aside id="agent-panel" class="panel">
+                <div class="panel-header">
+                    <h3>👤 Agent 详情</h3>
+                </div>
+                <div class="panel-body">
+                    <p class="placeholder-text">点击地图上的 Agent 查看详情</p>
+                </div>
+            </aside>
+
+            <!-- 右侧：实时事件日志 -->
+            <aside id="event-log" class="panel">
+                <div class="panel-header">
+                    <h3>📋 实时事件</h3>
+                </div>
+                <div class="panel-body" id="event-list">
+                    <p class="placeholder-text">等待世界引擎启动...</p>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- 📊 监测视图 -->
+    <main id="tab-monitor" class="tab-content">
+        <div class="monitor-layout">
+            <section class="monitor-section">
+                <h2>📊 实时指标</h2>
+                <div class="metrics-cards" id="metrics-cards">
+                    <p class="placeholder-text">等待数据...</p>
+                </div>
+            </section>
+            <section class="monitor-section">
+                <h2>⭐ Agent 评分排行</h2>
+                <div id="ranking-list">
+                    <p class="placeholder-text">等待评估数据...</p>
+                </div>
+            </section>
+            <section class="monitor-section">
+                <h2>📈 情绪波动</h2>
+                <canvas id="mood-chart" width="800" height="200"></canvas>
+            </section>
+        </div>
+    </main>
+
+    <!-- 📋 全部日志视图 -->
+    <main id="tab-logs" class="tab-content">
+        <div class="logs-layout">
+            <div class="panel-header">
+                <h3>📋 全部事件日志</h3>
+                <button class="btn-small" onclick="clearLogs()">清空</button>
+            </div>
+            <div class="panel-body" id="full-log-list">
+                <p class="placeholder-text">等待世界引擎启动...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- 底部控制栏 -->
+    <!-- ============================================================ -->
+    <footer id="control-bar">
+        <div class="control-left">
+            <button id="btn-play" class="ctrl-btn" onclick="togglePlay()" title="运行 / 暂停">
+                ▶ 运行
+            </button>
+            <div class="speed-controls">
+                <button class="ctrl-btn speed-btn" data-speed="0.5" onclick="setSpeed(0.5)">🐢 0.5x</button>
+                <button class="ctrl-btn speed-btn active" data-speed="1.0" onclick="setSpeed(1.0)">▶ 1x</button>
+                <button class="ctrl-btn speed-btn" data-speed="2.0" onclick="setSpeed(2.0)">⏩ 2x</button>
+            </div>
+        </div>
+        <div class="control-center">
+            <span id="day-display">Day 1</span>
+            <span class="separator">·</span>
+            <span id="time-display">⏰ 06:00</span>
+            <span class="separator">·</span>
+            <span id="tick-display">Tick: 0</span>
+        </div>
+        <div class="control-right">
+            <span id="token-display">🪙 Token: 0</span>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- JavaScript 脚本 -->
+    <!-- ============================================================ -->
+    <script src="/js/websocket.js"></script>
+    <script src="/js/map.js"></script>
+    <script src="/js/agent_panel.js"></script>
+    <script src="/js/event_log.js"></script>
+    <script src="/js/monitor_dashboard.js"></script>
+    <script src="/js/app.js"></script>
+
+</body>
+</html>
